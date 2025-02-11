@@ -19,12 +19,12 @@ class TestInditexApplicationTests {
     @Autowired
     private MockMvc mockMvc;
 
-    private Integer brandId = 1;
-    private Integer productId = 35455;
-    private String endpoint = "/prices/getPrice";
-    private String param1Name = "date";
-    private String param2Name = "brandId";
-    private String param3Name = "productId";
+    private final Integer brandId = 1;
+    private final Integer productId = 35455;
+    private final String endpoint = "/prices/getPrice";
+    private final String param1Name = "date";
+    private final String param2Name = "brandId";
+    private final String param3Name = "productId";
 
     @Test
     public void test_ok_existente() throws Exception {
