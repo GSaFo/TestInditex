@@ -1,0 +1,60 @@
+# Ignora archivos específicos del IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignora archivos de compilación y ejecución
+/target/
+/bin/
+/build/
+/out/
+/dist/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Ignora archivos de dependencias
+/.mvn/
+/.gradle/
+/mvnw
+/mvnw.cmd
+/gradlew
+/gradlew.bat
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Ignora archivos de configuración local
+*.properties
+*.yml
+*.yaml
+*.cfg
+*.conf
+
+# Ignora archivos de base de datos
+*.db
+*.sql
+*.h2.db
+
+# Ignora archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignora archivos temporales
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Ignora archivos de cobertura de pruebas
+/jacoco/
+*.exec
+
+# Ignora archivos de caché
+/.cache/
+/.npm/
+/.yarn/
+/.pnp
+/.pnp.js
