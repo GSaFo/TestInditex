@@ -7,7 +7,9 @@ import com.java.testinditex.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Servicio principal para el manejo de los objetos Prices
@@ -27,12 +29,14 @@ public class PricesService {
      */
     public Prices get(String date, Integer brandId, Integer productId) {
         PricesHelper helper = new PricesHelper();
-        List<Prices> pricesList = pricesRepository.find(date, brandId, productId);
+        Optional<List<Prices>> optionalPrices = pricesRepository.find(date, brandId, productId);
 
         // Recogemos todas las tarifas que concuerden con la informacion enviada
-        if (Utils.isEmpty(pricesList)) {
+        if (optionalPrices.isEmpty() || optionalPrices.get().isEmpty()) {
             return new Prices();
         }
+
+        List<Prices> pricesList = optionalPrices.get();
 
         // Devolvemos la tarifa segun orden en caso de haber mas de una
         return helper.help(pricesList);

@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Repositorio para la tabla prices
@@ -15,5 +16,5 @@ import java.util.List;
 public interface PricesRepository extends JpaRepository<Prices, Integer> {
 
     @Query(value = "SELECT * FROM prices WHERE PARSEDATETIME(:date, 'yyyy-MM-dd-HH.mm.ss') BETWEEN PARSEDATETIME(start_date, 'yyyy-MM-dd-HH.mm.ss') AND PARSEDATETIME(end_date, 'yyyy-MM-dd-HH.mm.ss')  AND brand_id = :brandId AND product_id = :productId", nativeQuery = true)
-    List<Prices> find(@Param("date") String date, @Param("brandId") Integer brandId, @Param("productId") Integer productId);
+    Optional<List<Prices>> find(@Param("date") String date, @Param("brandId") Integer brandId, @Param("productId") Integer productId);
 }

@@ -1,0 +1,13 @@
+com\java\testinditex\helper\PricesHelper.class
+com\java\testinditex\util\Utils.class
+com\java\testinditex\exception\GlobalExceptionHandler.class
+com\java\testinditex\model\Prices.class
+com\java\testinditex\mapper\MapperConfig.class
+com\java\testinditex\service\PricesService.class
+com\java\testinditex\TestInditexApplication.class
+com\java\testinditex\model\PricesDTO.class
+com\java\testinditex\adapter\LocalDateTimeTypeAdapter.class
+com\java\testinditex\ServletInitializer.class
+com\java\testinditex\model\Brands.class
+com\java\testinditex\controller\PricesController.class
+com\java\testinditex\repository\PricesRepository.class

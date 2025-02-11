@@ -27,7 +27,7 @@ class TestInditexApplicationTests {
     private String param3Name = "productId";
 
     @Test
-    public void test1() throws Exception {
+    public void test_ok_existente() throws Exception {
         String date = "2020-06-14-10.00.00";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isOk())
@@ -40,7 +40,7 @@ class TestInditexApplicationTests {
     }
 
     @Test
-    public void test2() throws Exception {
+    public void test_ok_existente2_different_date_and_pricelist() throws Exception {
         String date = "2020-06-14-16.00.00";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isOk())
@@ -53,7 +53,7 @@ class TestInditexApplicationTests {
     }
 
     @Test
-    public void test3() throws Exception {
+    public void test_ok_existente2_different_hora() throws Exception {
         String date = "2020-06-14-21.00.00";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isOk())
@@ -66,7 +66,7 @@ class TestInditexApplicationTests {
     }
 
     @Test
-    public void test4() throws Exception {
+    public void test_ok_existente2_different_date_pricelist() throws Exception {
         String date = "2020-06-15-10.00.00";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isOk())
@@ -79,7 +79,7 @@ class TestInditexApplicationTests {
     }
 
     @Test
-    public void test5() throws Exception {
+    public void test_ok_different_pricelist() throws Exception {
         String date = "2020-06-16-21.00.00";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isOk())
@@ -97,7 +97,7 @@ class TestInditexApplicationTests {
      * @throws Exception
      */
     @Test
-    public void test6() throws Exception {
+    public void test_no_content() throws Exception {
         String date = "2023-06-13-21.00.00";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isNoContent());
@@ -109,7 +109,7 @@ class TestInditexApplicationTests {
      * @throws Exception
      */
     @Test
-    public void test7() throws Exception {
+    public void test_invalid_params() throws Exception {
         String date = "test";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isNotAcceptable());
@@ -122,7 +122,7 @@ class TestInditexApplicationTests {
      * @throws Exception
      */
     @Test
-    public void test8() throws Exception {
+    public void test_missing_mandatory_params() throws Exception {
         String date = "test";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
                 .andExpect(status().isNotAcceptable());
