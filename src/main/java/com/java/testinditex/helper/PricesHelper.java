@@ -1,8 +1,8 @@
 package com.java.testinditex.helper;
 
+import com.java.testinditex.dto.PriceResponse;
 import com.java.testinditex.mapper.MapperConfig;
 import com.java.testinditex.model.Prices;
-import com.java.testinditex.model.PricesDTO;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class PricesHelper {
      * @param prices Un objeto prices
      * @return Un objeto simplificado
      */
-    public PricesDTO transformToDTO(Prices prices) {
-        return mapperConfig.map(prices, PricesDTO.class);
+    public PriceResponse transformToDTO(Prices prices) {
+        return mapperConfig.map(prices, PriceResponse.class);
     }
 }

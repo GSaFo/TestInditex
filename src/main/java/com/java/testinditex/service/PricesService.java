@@ -1,15 +1,11 @@
 package com.java.testinditex.service;
 
-import com.java.testinditex.helper.PricesHelper;
-import com.java.testinditex.model.Prices;
+import com.java.testinditex.dto.PriceResponse;
+import com.java.testinditex.exception.PriceNotFoundException;
+import com.java.testinditex.mapper.PriceMapper;
 import com.java.testinditex.repository.PricesRepository;
-import com.java.testinditex.util.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.Option;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Servicio principal para el manejo de los objetos Prices
@@ -27,18 +23,9 @@ public class PricesService {
      * @param productId Id del producto
      * @return Una tarifa a aplicar en caso de haber o un objeto vacio en caso contrario
      */
-    public Prices get(String date, Integer brandId, Integer productId) {
-        PricesHelper helper = new PricesHelper();
-        Optional<List<Prices>> optionalPrices = pricesRepository.find(date, brandId, productId);
-
-        // Recogemos todas las tarifas que concuerden con la informacion enviada
-        if (optionalPrices.isEmpty() || optionalPrices.get().isEmpty()) {
-            return new Prices();
-        }
-
-        List<Prices> pricesList = optionalPrices.get();
-
-        // Devolvemos la tarifa segun orden en caso de haber mas de una
-        return helper.help(pricesList);
+    public PriceResponse get(String date, Integer brandId, Integer productId) {
+        return pricesRepository.findApplicablePrice(date, productId, brandId)
+                .map(PriceMapper::toResponse)
+                .orElseThrow(() -> new PriceNotFoundException("No se encontró precio aplicable"));
     }
 }

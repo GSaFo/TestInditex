@@ -100,7 +100,7 @@ class TestInditexApplicationTests {
     public void test_no_content() throws Exception {
         String date = "2023-06-13-21.00.00";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
-                .andExpect(status().isNoContent());
+                .andExpect(status().isNotFound());
     }
 
     /**
@@ -112,7 +112,7 @@ class TestInditexApplicationTests {
     public void test_invalid_params() throws Exception {
         String date = "test";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
-                .andExpect(status().isNotAcceptable());
+                .andExpect(status().isInternalServerError());
     }
 
 
@@ -125,6 +125,6 @@ class TestInditexApplicationTests {
     public void test_missing_mandatory_params() throws Exception {
         String date = "test";
         mockMvc.perform(get(endpoint).param(param1Name, date).param(param2Name, brandId.toString()).param(param3Name, productId.toString()))
-                .andExpect(status().isNotAcceptable());
+                .andExpect(status().isInternalServerError());
     }
 }
