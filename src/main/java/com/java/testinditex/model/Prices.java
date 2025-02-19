@@ -25,7 +25,7 @@ public class Prices implements Serializable {
     private Long priceList;
 
     @Column(name = "product_id")
-    private Long productId;
+    private Integer productId;
 
     @Column
     private int priority;
@@ -75,11 +75,11 @@ public class Prices implements Serializable {
         this.priceList = priceList;
     }
 
-    public Long getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 

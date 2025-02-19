@@ -8,14 +8,14 @@ import java.util.List;
 
 public class PricesHelper {
 
-    private MapperConfig mapperConfig = new MapperConfig();
+    private static MapperConfig mapperConfig = new MapperConfig();
 
     /**
      * Metodo que recibe una lista de tarifas y comprueba cual tiene mayor prioridad
      *
      * @return Una tarifa a aplicar
      */
-    public Prices help(List<Prices> pricesList) {
+    public static Prices help(List<Prices> pricesList) {
         Prices price = pricesList.get(0);
         for (Prices prices : pricesList) {
             if (price.getPriority() < prices.getPriority()) {
@@ -32,7 +32,7 @@ public class PricesHelper {
      * @param prices Un objeto prices
      * @return Un objeto simplificado
      */
-    public PriceResponse transformToDTO(Prices prices) {
+    public static PriceResponse transformToDTO(Prices prices) {
         return mapperConfig.map(prices, PriceResponse.class);
     }
 }
